@@ -2,6 +2,7 @@ import argparse
 import os
 import re
 import subprocess
+from rich import print
 from urllib.parse import urlparse
 
 # constants for subprocess.run for readability
