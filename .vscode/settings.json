@@ -1,5 +1,5 @@
 {
   "pylint.args": [
-    "--disable=invalid-name,missing-module-docstring,line-too-long,wrong-import-order"
+    "--disable=missing-module-docstring,line-too-long,wrong-import-order"
   ]
 }

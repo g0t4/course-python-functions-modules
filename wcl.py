@@ -29,8 +29,8 @@ parsed: dict | None = None
 
 if url.startswith("git@"):  # SSH URL
     # git@host:path/to/repo.git
-    ssh_pattern = r"git@([^:]+):(.+)"
-    match = re.match(ssh_pattern, url)
+    SSH_PATTERN = r"git@([^:]+):(.+)"
+    match = re.match(SSH_PATTERN, url)
     if match:
         host, path = match.groups()
         parsed = {"domain": host, "repo_path": path}
@@ -88,13 +88,13 @@ if os.name != "nt":
         # - zsh's z allows dir to be added before it is created
         # - adding ahead of creating (during clone) means I can _cd_ to it while its cloning
         # - or if dir already exists, then add to the stats count for it
-        z_add_zsh = f"z --add '{repo_dir}'"
+        Z_ADD_ZSH = f"z --add '{repo_dir}'"
         if dry_run:
             print("# zsh z add:")
-            print(z_add_zsh, "\n")
+            print(Z_ADD_ZSH, "\n")
         else:
             # zsh -i => interactive, otherwise z command won't be available
-            subprocess.run(["zsh", "-il", "-c", z_add_zsh], check=IGNORE_FAILURE)
+            subprocess.run(["zsh", "-il", "-c", Z_ADD_ZSH], check=IGNORE_FAILURE)
 
 if os.path.isdir(repo_dir):
     print(f"repo_dir exists {repo_dir}, attempt pull latest", "\n")
@@ -122,12 +122,12 @@ is_windows = os.name == "nt"
 if is_windows:
     # - dir must exist before calling z
     # - FYI current pwsh z caches the db, so this only works for z calls in a new pwsh instance
-    z_add_pwsh = f"z '{repo_dir}'"
+    Z_ADD_PWSH = f"z '{repo_dir}'"
     if dry_run:
         print("# pwsh z add:")
-        print(z_add_pwsh, "\n")
+        print(Z_ADD_PWSH, "\n")
     else:
-        subprocess.run(["pwsh", "-NoProfile", "-Command", z_add_pwsh], check=IGNORE_FAILURE)
+        subprocess.run(["pwsh", "-NoProfile", "-Command", Z_ADD_PWSH], check=IGNORE_FAILURE)
 
 if os.name != "nt":
     which_fish = subprocess.run("which fish", shell=True, check=IGNORE_FAILURE, stdout=subprocess.DEVNULL)
