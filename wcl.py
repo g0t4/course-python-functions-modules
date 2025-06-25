@@ -83,7 +83,7 @@ else:
     os.makedirs(org_dir, exist_ok=True)
 
 if os.name != "nt":
-    which_zsh = subprocess.run(f"which zsh", shell=True, check=IGNORE_FAILURE, stdout=subprocess.DEVNULL)
+    which_zsh = subprocess.run("which zsh", shell=True, check=IGNORE_FAILURE, stdout=subprocess.DEVNULL)
     if which_zsh.returncode == 0:
         # - zsh's z allows dir to be added before it is created
         # - adding ahead of creating (during clone) means I can _cd_ to it while its cloning
@@ -130,7 +130,7 @@ if is_windows:
         subprocess.run(["pwsh", "-NoProfile", "-Command", z_add_pwsh], check=IGNORE_FAILURE)
 
 if os.name != "nt":
-    which_fish = subprocess.run(f"which fish", shell=True, check=IGNORE_FAILURE, stdout=subprocess.DEVNULL)
+    which_fish = subprocess.run("which fish", shell=True, check=IGNORE_FAILURE, stdout=subprocess.DEVNULL)
     if which_fish.returncode == 0:
         # - dir must exist before calling __z_add
         # - __z_add does not take an argument, instead it uses $PWD (hence set cwd)
