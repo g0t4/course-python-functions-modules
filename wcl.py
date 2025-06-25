@@ -2,6 +2,7 @@ import argparse
 import os
 import re
 import subprocess
+import sys
 from rich import print
 from urllib.parse import urlparse
 
@@ -58,7 +59,7 @@ elif re.search(r"\/", url):
 
 if not parsed:
     print("unable to parse repository url", url, "\n")
-    exit(1)
+    sys.exit(1)
 
 host_name = parsed["domain"]
 if host_name == "github.com":
@@ -73,7 +74,7 @@ org_dir = os.path.dirname(repo_dir)
 
 if path_only:
     print(repo_dir)
-    exit()
+    sys.exit()
 
 # ensure org dir exists, including parents
 # - can also let git clone create parents
