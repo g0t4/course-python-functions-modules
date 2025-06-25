@@ -5,6 +5,7 @@ requires-python = ">=3.13"
 dependencies = [
     "ipykernel>=6.29.5",
     "ipython>=9.3.0",
+    "rich>=14.0.0",
     "rope>=1.13.0",
     "yapf>=0.43.0",
 ]
