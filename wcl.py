@@ -78,7 +78,14 @@ def parse_url():
 
 
 
-repo_dir = parse_url()
+repo_dir = parse_url("https://huggingface.co/datasets/PleIAs/GoldenSwag/tree/main/data")
+print(repo_dir)
+repo_dir = parse_url("foo")
+print(repo_dir)
+
+
+
+# repo_dir = parse_url()
 if path_only:
     print(repo_dir)
     sys.exit()
