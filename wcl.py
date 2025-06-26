@@ -61,9 +61,6 @@ def parse_url():
         # 2+ levels (obviously github only has two: org/repo)
         parsed = {"domain": "github.com", "repo_path": url}
 
-
-
-
     if not parsed:
         print("unable to parse repository url", url, "\n")
         sys.exit(1)
@@ -77,6 +74,9 @@ def parse_url():
         host_name = "bitbucket"
 
     repo_dir = os.path.expanduser(os.path.join("~/repos", host_name, parsed["repo_path"]))
+
+
+
 
 if path_only:
     print(repo_dir)
