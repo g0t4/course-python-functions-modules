@@ -70,7 +70,6 @@ elif host_name == "bitbucket.org":
     host_name = "bitbucket"
 
 repo_dir = os.path.expanduser(os.path.join("~/repos", host_name, parsed["repo_path"]))
-org_dir = os.path.dirname(repo_dir)
 
 if path_only:
     print(repo_dir)
@@ -78,6 +77,7 @@ if path_only:
 
 # ensure org dir exists, including parents
 # - can also let git clone create parents
+org_dir = os.path.dirname(repo_dir)
 if dry_run:
     print("mkdir -p", org_dir, "\n")
 else:
