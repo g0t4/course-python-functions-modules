@@ -21,8 +21,7 @@ args = parser.parse_args()
 dry_run: bool = args.dry_run
 path_only: bool = args.path_only
 
-def parse_url():
-    url: str = args.url
+def parse_url(url: str) -> str:
 
     url = url.strip()
 
