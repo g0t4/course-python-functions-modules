@@ -74,10 +74,11 @@ def parse_url():
         host_name = "bitbucket"
 
     repo_dir = os.path.expanduser(os.path.join("~/repos", host_name, parsed["repo_path"]))
+    return repo_dir
 
 
 
-parse_url()
+repo_dir = parse_url()
 if path_only:
     print(repo_dir)
     sys.exit()
