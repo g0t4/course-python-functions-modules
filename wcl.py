@@ -10,17 +10,6 @@ from urllib.parse import urlparse
 IGNORE_FAILURE = False
 STOP_ON_FAILURE = True
 
-parser = argparse.ArgumentParser(description="(w)es (cl)one", prog="wcl")
-parser.add_argument("url", type=str, help="repository clone url")
-parser.add_argument("--dry-run", action="store_true", help="preview changes")
-parser.add_argument("--path-only", action="store_true", help="return path (do not clone)")
-args = parser.parse_args()
-
-
-
-dry_run: bool = args.dry_run
-path_only: bool = args.path_only
-
 def parse_url(url: str) -> str:
 
     url = url.strip()
@@ -90,6 +79,18 @@ def wes_clone():
         print(repo_dir)
         sys.exit()
 
+
+
+parser = argparse.ArgumentParser(description="(w)es (cl)one", prog="wcl")
+parser.add_argument("url", type=str, help="repository clone url")
+parser.add_argument("--dry-run", action="store_true", help="preview changes")
+parser.add_argument("--path-only", action="store_true", help="return path (do not clone)")
+args = parser.parse_args()
+
+
+
+dry_run: bool = args.dry_run
+path_only: bool = args.path_only
 
 
 
