@@ -10,7 +10,7 @@ from urllib.parse import urlparse
 IGNORE_FAILURE = False
 STOP_ON_FAILURE = True
 
-def parse_url(url: str) -> str:
+def parse_url(url: str) -> tuple[str, str]:
 
     url = url.strip()
 
