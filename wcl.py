@@ -93,7 +93,7 @@ def wes_clone():
     dry_run: bool = args.dry_run
     path_only: bool = args.path_only
 
-    repo_dir = parse_url(args.url)
+    repo_dir, clone_from = parse_url(args.url)
     if path_only:
         print(repo_dir)
         sys.exit()
