@@ -84,15 +84,16 @@ print(repo_dir)
 
 
 
-# repo_dir = parse_url()
-if path_only:
-    print(repo_dir)
-    sys.exit()
+def wes_clone():
+    repo_dir = parse_url(args.url)
+    if path_only:
+        print(repo_dir)
+        sys.exit()
 
 
 
 
-sys.exit(0)
+    sys.exit(0)
 
 # ensure org dir exists, including parents
 # - can also let git clone create parents
