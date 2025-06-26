@@ -64,19 +64,19 @@ def parse_url():
 
 
 
-if not parsed:
-    print("unable to parse repository url", url, "\n")
-    sys.exit(1)
+    if not parsed:
+        print("unable to parse repository url", url, "\n")
+        sys.exit(1)
 
-host_name = parsed["domain"]
-if host_name == "github.com":
-    host_name = "github"
-elif host_name == "gitlab.com":
-    host_name = "gitlab"
-elif host_name == "bitbucket.org":
-    host_name = "bitbucket"
+    host_name = parsed["domain"]
+    if host_name == "github.com":
+        host_name = "github"
+    elif host_name == "gitlab.com":
+        host_name = "gitlab"
+    elif host_name == "bitbucket.org":
+        host_name = "bitbucket"
 
-repo_dir = os.path.expanduser(os.path.join("~/repos", host_name, parsed["repo_path"]))
+    repo_dir = os.path.expanduser(os.path.join("~/repos", host_name, parsed["repo_path"]))
 
 if path_only:
     print(repo_dir)
