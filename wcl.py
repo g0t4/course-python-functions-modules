@@ -93,7 +93,6 @@ def wes_clone():
 
 
 
-    sys.exit(0)
 
     # ensure org dir exists, including parents
     # - can also let git clone create parents
