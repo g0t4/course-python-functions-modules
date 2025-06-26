@@ -16,6 +16,10 @@ parser.add_argument("--dry-run", action="store_true", help="preview changes")
 parser.add_argument("--path-only", action="store_true", help="return path (do not clone)")
 args = parser.parse_args()
 
+
+
+
+
 url: str = args.url
 dry_run: bool = args.dry_run
 path_only: bool = args.path_only
@@ -56,6 +60,10 @@ elif re.search(r"\/", url):
     #   => github.com:g0t4/dotfiles
     # 2+ levels (obviously github only has two: org/repo)
     parsed = {"domain": "github.com", "repo_path": url}
+
+
+
+sys.exit(0)
 
 if not parsed:
     print("unable to parse repository url", url, "\n")
