@@ -77,7 +77,7 @@ def parse_url():
 
 
 
-
+parse_url()
 if path_only:
     print(repo_dir)
     sys.exit()
