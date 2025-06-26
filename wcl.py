@@ -62,6 +62,14 @@ def parse_url(url: str) -> str:
         host_name = "bitbucket"
 
     repo_dir = os.path.expanduser(os.path.join("~/repos", host_name, parsed["repo_path"]))
+        always_use_https = parsed["domain"] in ["gitlab.gnome.org", "sourceware.org", "git.kernel.org", "huggingface.co", "git.sr.ht"]
+        if always_use_https:
+            clone_from = f"https://{parsed["domain"]}/{parsed["repo_path"]}"
+        else:
+            # prefer ssh for git repos (simple, standard, supports ssh auth)
+            clone_from = f"git@{parsed["domain"]}:{parsed["repo_path"]}"
+        print(f"# cloning {clone_from}...")
+
     return repo_dir
 
 
@@ -119,14 +127,6 @@ def wes_clone():
         else:
             subprocess.run(pull, check=IGNORE_FAILURE)
     else:
-        always_use_https = parsed["domain"] in ["gitlab.gnome.org", "sourceware.org", "git.kernel.org", "huggingface.co", "git.sr.ht"]
-        if always_use_https:
-            clone_from = f"https://{parsed["domain"]}/{parsed["repo_path"]}"
-        else:
-            # prefer ssh for git repos (simple, standard, supports ssh auth)
-            clone_from = f"git@{parsed["domain"]}:{parsed["repo_path"]}"
-        print(f"# cloning {clone_from}...")
-
         clone = ["git", "clone", "--recurse-submodules", clone_from, repo_dir]
         if dry_run:
             print(clone, "\n")
