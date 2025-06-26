@@ -69,15 +69,14 @@ def parse_url(url: str) -> tuple[str, str]:
     else:
         # prefer ssh for git repos (simple, standard, supports ssh auth)
         clone_from = f"git@{parsed["domain"]}:{parsed["repo_path"]}"
-    print(f"# cloning {clone_from}...")
 
     return repo_dir, clone_from
 
 
 
-repo_dir = parse_url("https://huggingface.co/datasets/PleIAs/GoldenSwag/tree/main/data")
+repo_dir, clone_from = parse_url("https://huggingface.co/datasets/PleIAs/GoldenSwag/tree/main/data")
 print(repo_dir)
-repo_dir = parse_url("foo")
+repo_dir, clone_from = parse_url("foo")
 print(repo_dir)
 
 
@@ -128,6 +127,7 @@ def wes_clone():
         else:
             subprocess.run(pull, check=IGNORE_FAILURE)
     else:
+        print(f"# cloning {clone_from}...")
         clone = ["git", "clone", "--recurse-submodules", clone_from, repo_dir]
         if dry_run:
             print(clone, "\n")
@@ -172,7 +172,7 @@ def open_in_ide():
     parser.add_argument("url", type=str, help="repository clone url")
     args = parser.parse_args()
 
-    repo_dir = parse_url(args.url)
+    repo_dir, _ = parse_url(args.url)
     subprocess.run(f"code '{repo_dir}'", shell=True, check=IGNORE_FAILURE, stdout=subprocess.DEVNULL)
 
 wes_clone()
