@@ -159,7 +159,6 @@ def wes_clone():
             else:
                 subprocess.run(z_add_fish, cwd=repo_dir, check=IGNORE_FAILURE)
 
-# wes_clone()
 
 
 
@@ -175,6 +174,7 @@ def open_in_ide():
     repo_dir = parse_url(args.url)
     subprocess.run(f"code '{repo_dir}'", shell=True, check=IGNORE_FAILURE, stdout=subprocess.DEVNULL)
 
-open_in_ide()
+wes_clone()
+# open_in_ide()
 
 
