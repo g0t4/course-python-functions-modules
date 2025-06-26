@@ -79,21 +79,14 @@ def wes_clone():
         print(repo_dir)
         sys.exit()
 
+    parser = argparse.ArgumentParser(description="(w)es (cl)one", prog="wcl")
+    parser.add_argument("url", type=str, help="repository clone url")
+    parser.add_argument("--dry-run", action="store_true", help="preview changes")
+    parser.add_argument("--path-only", action="store_true", help="return path (do not clone)")
+    args = parser.parse_args()
 
-
-parser = argparse.ArgumentParser(description="(w)es (cl)one", prog="wcl")
-parser.add_argument("url", type=str, help="repository clone url")
-parser.add_argument("--dry-run", action="store_true", help="preview changes")
-parser.add_argument("--path-only", action="store_true", help="return path (do not clone)")
-args = parser.parse_args()
-
-
-
-dry_run: bool = args.dry_run
-path_only: bool = args.path_only
-
-
-
+    dry_run: bool = args.dry_run
+    path_only: bool = args.path_only
 
     # ensure org dir exists, including parents
     # - can also let git clone create parents
