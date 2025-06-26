@@ -71,7 +71,7 @@ def parse_url(url: str) -> str:
         clone_from = f"git@{parsed["domain"]}:{parsed["repo_path"]}"
     print(f"# cloning {clone_from}...")
 
-    return repo_dir
+    return repo_dir, clone_from
 
 
 
