@@ -20,46 +20,46 @@ args = parser.parse_args()
 
 
 
-url: str = args.url
-dry_run: bool = args.dry_run
-path_only: bool = args.path_only
+    url: str = args.url
+    dry_run: bool = args.dry_run
+    path_only: bool = args.path_only
 
-url = url.strip()
+    url = url.strip()
 
-# strip .git
-if url.endswith(".git"):
-    url = url[:-4]
+    # strip .git
+    if url.endswith(".git"):
+        url = url[:-4]
 
-parsed: dict | None = None
+    parsed: dict | None = None
 
-if url.startswith("git@"):  # SSH URL
-    # git@host:path/to/repo.git
-    SSH_PATTERN = r"git@([^:]+):(.+)"
-    match = re.match(SSH_PATTERN, url)
-    if match:
-        host, path = match.groups()
-        parsed = {"domain": host, "repo_path": path}
-    # else => None (invalid git@ url)
-elif url.startswith("https://"):  # HTTPS or similar
-    url_parsed = urlparse(url)
-    path = url_parsed.path.lstrip("/")  # Remove leading '/'
-    path = path.rstrip("/")  # Remove trailing '/' => wcl https://github.com/Hammerspoon/Spoons/
+    if url.startswith("git@"):  # SSH URL
+        # git@host:path/to/repo.git
+        SSH_PATTERN = r"git@([^:]+):(.+)"
+        match = re.match(SSH_PATTERN, url)
+        if match:
+            host, path = match.groups()
+            parsed = {"domain": host, "repo_path": path}
+        # else => None (invalid git@ url)
+    elif url.startswith("https://"):  # HTTPS or similar
+        url_parsed = urlparse(url)
+        path = url_parsed.path.lstrip("/")  # Remove leading '/'
+        path = path.rstrip("/")  # Remove trailing '/' => wcl https://github.com/Hammerspoon/Spoons/
 
-    # org/repo/blob/branch/path/to/file, strip blob+ (must have org/repo before blob)
-    # PRN if it happens to be that a repo is named blob/tree then we have issues!
-    if re.search(r"[^/]+/[^/]+/(blob|tree)/", path):
-        path = re.sub(r"/(blob|tee).*", "", path)
+        # org/repo/blob/branch/path/to/file, strip blob+ (must have org/repo before blob)
+        # PRN if it happens to be that a repo is named blob/tree then we have issues!
+        if re.search(r"[^/]+/[^/]+/(blob|tree)/", path):
+            path = re.sub(r"/(blob|tee).*", "", path)
 
-    parsed = {"domain": url_parsed.netloc, "repo_path": path}
-elif not re.search(r"\/", url):
-    # url = "dotfiles"
-    #   => github.com:g0t4/{url}
-    parsed = {"domain": "github.com", "repo_path": "g0t4/" + url}
-elif re.search(r"\/", url):
-    # url = "g0t4/dotfiles"
-    #   => github.com:g0t4/dotfiles
-    # 2+ levels (obviously github only has two: org/repo)
-    parsed = {"domain": "github.com", "repo_path": url}
+        parsed = {"domain": url_parsed.netloc, "repo_path": path}
+    elif not re.search(r"\/", url):
+        # url = "dotfiles"
+        #   => github.com:g0t4/{url}
+        parsed = {"domain": "github.com", "repo_path": "g0t4/" + url}
+    elif re.search(r"\/", url):
+        # url = "g0t4/dotfiles"
+        #   => github.com:g0t4/dotfiles
+        # 2+ levels (obviously github only has two: org/repo)
+        parsed = {"domain": "github.com", "repo_path": url}
 
 
 
