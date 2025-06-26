@@ -48,7 +48,7 @@ elif url.startswith("https://"):  # HTTPS or similar
 
     parsed = {"domain": url_parsed.netloc, "repo_path": path}
 elif not re.search(r"\/", url):
-    # url = "g0t4"
+    # url = "dotfiles"
     #   => github.com:g0t4/{url}
     parsed = {"domain": "github.com", "repo_path": "g0t4/" + url}
 elif re.search(r"\/", url):
