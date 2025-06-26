@@ -74,10 +74,6 @@ print(repo_dir)
 
 
 def wes_clone():
-    repo_dir = parse_url(args.url)
-    if path_only:
-        print(repo_dir)
-        sys.exit()
 
     parser = argparse.ArgumentParser(description="(w)es (cl)one", prog="wcl")
     parser.add_argument("url", type=str, help="repository clone url")
@@ -87,6 +83,11 @@ def wes_clone():
 
     dry_run: bool = args.dry_run
     path_only: bool = args.path_only
+
+    repo_dir = parse_url(args.url)
+    if path_only:
+        print(repo_dir)
+        sys.exit()
 
     # ensure org dir exists, including parents
     # - can also let git clone create parents
@@ -157,3 +158,6 @@ def wes_clone():
                 print(z_add_fish, f"cwd={repo_dir}", "\n")
             else:
                 subprocess.run(z_add_fish, cwd=repo_dir, check=IGNORE_FAILURE)
+
+wes_clone()
+
