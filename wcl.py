@@ -63,7 +63,6 @@ def parse_url():
 
 
 
-sys.exit(0)
 
 if not parsed:
     print("unable to parse repository url", url, "\n")
@@ -82,6 +81,11 @@ repo_dir = os.path.expanduser(os.path.join("~/repos", host_name, parsed["repo_pa
 if path_only:
     print(repo_dir)
     sys.exit()
+
+
+
+
+sys.exit(0)
 
 # ensure org dir exists, including parents
 # - can also let git clone create parents
