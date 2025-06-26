@@ -92,6 +92,8 @@ def wes_clone():
     dry_run: bool = args.dry_run
     path_only: bool = args.path_only
 
+    # possible seam for reusing clone_repo code below!
+
     repo_dir, clone_from = parse_url(args.url)
     if path_only:
         print(repo_dir)
