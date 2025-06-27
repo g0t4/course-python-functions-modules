@@ -6,7 +6,8 @@ uv sync
 
 # OR, use venv/pip manually
 python3 -m venv .venv
-source .venv/bin/activate[.fish]
+source .venv/bin/activate
+# source .venv/bin/activate.fish  # if using fish shell
 pip3 install .
 
 ```
