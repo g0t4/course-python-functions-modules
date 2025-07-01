@@ -16,13 +16,12 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="preview changes")
     parser.add_argument("--path-only", action="store_true", help="return path (do not clone)")
     args = parser.parse_args()
+    clone_repo(args.url, args.dry_run, args.path_only)
 
-    dry_run: bool = args.dry_run
-    path_only: bool = args.path_only
 
-    # possible seam for reusing clone_repo code below!
+def clone_repo(url: str, dry_run: bool, path_only: bool):
 
-    repo_dir, clone_from = parse_url(args.url)
+    repo_dir, clone_from = parse_url(url)
     if path_only:
         print(repo_dir)
         sys.exit()
