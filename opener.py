@@ -1,5 +1,5 @@
 
-def open_in_ide():
+def main():
 
     parser = argparse.ArgumentParser(description="(w)es (cl)one", prog="wcl")
     parser.add_argument("url", type=str, help="repository clone url")
@@ -8,4 +8,6 @@ def open_in_ide():
     repo_dir, _ = parse_url(args.url)
     subprocess.run(f"code '{repo_dir}'", shell=True, check=IGNORE_FAILURE, stdout=subprocess.DEVNULL)
 
+if __name__ == "__main__":
+    main()
 
