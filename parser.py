@@ -70,9 +70,15 @@ def parse_url(url: str) -> tuple[str, str]:
     return repo_dir, clone_from
 
 if __name__ == "__main__":
-    repo_dir, clone_from = parse_url("https://huggingface.co/datasets/PleIAs/GoldenSwag/tree/main/data")
-    print(repo_dir)
-    repo_dir, clone_from = parse_url("foo")
-    print(repo_dir)
+    from unittest import TestCase
 
+    _test = TestCase()
+
+    repo_dir, _ = parse_url("https://gitlab.com/g0t4/dotfiles.git")
+    _test.assertEqual(repo_dir, "/Users/wesdemos/repos/gitlab/g0t4/dotfiles")
+
+    repo_dir, _ = parse_url("https://huggingface.co/datasets/PleIAs/common_corpus/tree/main")
+    _test.assertEqual(repo_dir, "/Users/wesdemos/repos/huggingface.co/datasets/PleIAs/common_corpus")
+
+    print("testing done")
 
