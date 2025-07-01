@@ -9,12 +9,6 @@ IGNORE_FAILURE = False
 STOP_ON_FAILURE = True
 
 
-repo_dir, clone_from = parse_url("https://huggingface.co/datasets/PleIAs/GoldenSwag/tree/main/data")
-print(repo_dir)
-repo_dir, clone_from = parse_url("foo")
-print(repo_dir)
-
-
 
 def wes_clone():
 

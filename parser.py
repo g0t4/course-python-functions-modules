@@ -69,5 +69,10 @@ def parse_url(url: str) -> tuple[str, str]:
 
     return repo_dir, clone_from
 
-print(parse_url)
+if __name__ == "__main__":
+    repo_dir, clone_from = parse_url("https://huggingface.co/datasets/PleIAs/GoldenSwag/tree/main/data")
+    print(repo_dir)
+    repo_dir, clone_from = parse_url("foo")
+    print(repo_dir)
+
 
