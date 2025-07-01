@@ -9,7 +9,7 @@ from parser import parse_url
 IGNORE_FAILURE = False
 STOP_ON_FAILURE = True
 
-def wes_clone():
+def main():
 
     parser = argparse.ArgumentParser(description="(w)es (cl)one", prog="wcl")
     parser.add_argument("url", type=str, help="repository clone url")
@@ -89,5 +89,6 @@ def wes_clone():
                 print(z_add_fish, f"cwd={repo_dir}", "\n")
             else:
                 subprocess.run(z_add_fish, cwd=repo_dir, check=IGNORE_FAILURE)
-wes_clone()
-# open_in_ide()
+
+if __name__ == "__main__":
+    main()
