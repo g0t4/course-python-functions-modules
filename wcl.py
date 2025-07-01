@@ -4,11 +4,10 @@ import subprocess
 import sys
 from rich import print
 from parser import parse_url
+
 # constants for subprocess.run for readability
 IGNORE_FAILURE = False
 STOP_ON_FAILURE = True
-
-
 
 def wes_clone():
 
@@ -91,12 +90,6 @@ def wes_clone():
             else:
                 subprocess.run(z_add_fish, cwd=repo_dir, check=IGNORE_FAILURE)
 
-
-
-
-
-
-
 def open_in_ide():
 
     parser = argparse.ArgumentParser(description="(w)es (cl)one", prog="wcl")
@@ -108,5 +101,3 @@ def open_in_ide():
 
 wes_clone()
 # open_in_ide()
-
-
