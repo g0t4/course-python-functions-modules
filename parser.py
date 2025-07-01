@@ -4,8 +4,7 @@ import sys
 from rich import print
 from urllib.parse import urlparse
 
-print(__name__)
-
+# print(__name__)
 
 def parse_url(url: str) -> tuple[str, str]:
 
