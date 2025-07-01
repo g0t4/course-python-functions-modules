@@ -33,7 +33,7 @@ def parse_url(url: str) -> tuple[str, str]:
         # org/repo/blob/branch/path/to/file, strip blob+ (must have org/repo before blob)
         # PRN if it happens to be that a repo is named blob/tree then we have issues!
         if re.search(r"[^/]+/[^/]+/(blob|tree)/", path):
-            path = re.sub(r"/(blob|tee).*", "", path)
+            path = re.sub(r"/(blob|tree).*", "", path)
 
         parsed = {"domain": url_parsed.netloc, "repo_path": path}
     elif not re.search(r"\/", url):
