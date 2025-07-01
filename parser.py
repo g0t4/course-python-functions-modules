@@ -1,3 +1,8 @@
+import os
+import re
+import sys
+from rich import print
+from urllib.parse import urlparse
 
 def parse_url(url: str) -> tuple[str, str]:
 

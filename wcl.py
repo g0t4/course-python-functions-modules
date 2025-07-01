@@ -1,10 +1,8 @@
 import argparse
 import os
-import re
 import subprocess
 import sys
 from rich import print
-from urllib.parse import urlparse
 
 # constants for subprocess.run for readability
 IGNORE_FAILURE = False
