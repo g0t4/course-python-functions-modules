@@ -3,10 +3,13 @@ import os
 import subprocess
 import sys
 from rich import print
-from parser import parse_url
 
-# for p in sys.path:
-#     print(p)
+print("sys.path:")
+for p in sys.path:
+    print(f"  {p}")
+print()
+
+from parser import parse_url
 
 # constants for subprocess.run for readability
 IGNORE_FAILURE = False
