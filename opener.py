@@ -15,7 +15,7 @@ def main():
     parser.add_argument("url", type=str, help="repository clone url")
     args = parser.parse_args()
 
-    clone_repo(args.url, False, False)
+    clone_repo(args.url, dry_run=False, path_only=False)
 
     repo_dir, _ = parse_url(args.url)
     subprocess.run(f"code '{repo_dir}'", shell=True, check=IGNORE_FAILURE, stdout=subprocess.DEVNULL)
