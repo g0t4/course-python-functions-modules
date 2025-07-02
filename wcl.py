@@ -19,7 +19,7 @@ def main():
     clone_repo(args.url, args.dry_run, args.path_only)
 
 
-def clone_repo(url: str, dry_run: bool, path_only: bool):
+def clone_repo(url: str, dry_run: bool = False, path_only: bool = False):
 
     repo_dir, clone_from = parse_url(url)
     if path_only:
