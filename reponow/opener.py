@@ -1,8 +1,8 @@
 import argparse
 import subprocess
 from rich import print
-from parser import parse_url
-from wcl import clone_repo
+from reponow.parser import parse_url
+from reponow.wcl import clone_repo
 
 # constants for subprocess.run for readability
 IGNORE_FAILURE = False
