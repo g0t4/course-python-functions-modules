@@ -17,3 +17,6 @@ open_repo = "reponow.opener:main"
 [tool.pylint.'MESSAGES CONTROL']
 disable = ['missing-module-docstring', 'line-too-long' ]
 
+[project.urls]
+Homepage = "https://github.com/g0t4/course-python-functions-modules"
+
