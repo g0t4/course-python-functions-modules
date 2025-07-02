@@ -17,6 +17,10 @@ dependencies = [
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
 
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
 [project.scripts]
 wcl = "reponow.wcl:main"
 open_repo = "reponow.opener:main"
