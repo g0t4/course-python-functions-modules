@@ -5,6 +5,9 @@ import sys
 from rich import print
 from parser import parse_url
 
+# for p in sys.path:
+#     print(p)
+
 # constants for subprocess.run for readability
 IGNORE_FAILURE = False
 STOP_ON_FAILURE = True
