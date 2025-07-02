@@ -2,6 +2,7 @@ import argparse
 import subprocess
 from rich import print
 from parser import parse_url
+from wcl import clone_repo
 
 # constants for subprocess.run for readability
 IGNORE_FAILURE = False
@@ -14,7 +15,7 @@ def main():
     parser.add_argument("url", type=str, help="repository clone url")
     args = parser.parse_args()
 
-    clone_repo(args.url, args.dry_run, args.path_only)
+    clone_repo(args.url, False, False)
 
     repo_dir, _ = parse_url(args.url)
     subprocess.run(f"code '{repo_dir}'", shell=True, check=IGNORE_FAILURE, stdout=subprocess.DEVNULL)
