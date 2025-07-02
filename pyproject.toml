@@ -1,5 +1,5 @@
 [project]
-name = "course-python-functions-modules"
+name = "reponow"
 version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
@@ -9,6 +9,10 @@ dependencies = [
     "rope>=1.13.0",
     "yapf>=0.43.0",
 ]
+
+[project.scripts]
+wcl = "reponow.wcl:main"
+open_repo = "reponow.opener:main"
 
 [tool.pylint.'MESSAGES CONTROL']
 disable = ['missing-module-docstring', 'line-too-long' ]
