@@ -1,7 +1,8 @@
 import os
 
 def join(first_arg, *parts):
-    return os.path.expanduser(os.path.join(first_arg, *parts))
+    first_arg = os.path.expanduser(first_arg)
+    return os.path.join(first_arg, *parts)
 
 def exists(path):
     first_arg = os.path.expanduser(path)
