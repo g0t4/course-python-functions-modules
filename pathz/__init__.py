@@ -4,8 +4,10 @@ def join(*parts):
     return os.path.expanduser(os.path.join(*parts))
 
 def exists(path):
-    return os.path.exists(os.path.expanduser(path))
+    first_arg = os.path.expanduser(path)
+    return os.path.exists(first_arg)
 
 def abspath(path):
-    return os.path.abspath(os.path.expanduser(path))
+    first_arg = os.path.expanduser(path)
+    return os.path.abspath(first_arg)
 
