@@ -8,14 +8,20 @@ authors = [
   { name="Wes Higbee", email="wes.mcclure@gmail.com" },
 ]
 dependencies = [
-    "ipykernel>=6.29.5",
-    "ipython>=9.3.0",
     "rich>=14.0.0",
-    "rope>=1.13.0",
-    "yapf>=0.43.0",
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
+
+[project.optional-dependencies]
+dev = [
+    "ipykernel>=6.29.5",
+    "ipython>=9.3.0",
+    "pytest>=8.4.1",
+    "pytest-watch>=4.2.0",
+    "rope>=1.13.0",
+    "yapf>=0.43.0",
+]
 
 [build-system]
 requires = ["hatchling >= 1.26"]
