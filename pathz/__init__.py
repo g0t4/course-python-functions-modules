@@ -8,10 +8,18 @@ def expand_tilde_first_and_then(path_func):
 
     return wrapped_path_func
 
+@expand_tilde_first_and_then
+def exists(path):
+    """Test whether a path exists.  Returns False for broken symbolic links"""
+    try:
+        os.stat(path)
+    except (OSError, ValueError):
+        return False
+    return True
 
 join = expand_tilde_first_and_then(os.path.join)
 abspath = expand_tilde_first_and_then(os.path.abspath)
-exists = expand_tilde_first_and_then(os.path.exists)
+# exists = expand_tilde_first_and_then(os.path.exists)
 
 #
 # def join(first_component, *parts):
