@@ -1,4 +1,5 @@
-from os import path
+# from os import path
+import pathz as path
 
 def test_joiner_no_tilde_expands_like_normal():
     joined = path.join("path", "to", "file.txt")
