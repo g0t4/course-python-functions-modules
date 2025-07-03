@@ -2,7 +2,7 @@
 name = "reponow"
 description = "convention based repo clone, open, etc"
 version = "0.0.1"
-requires-python = ">=3.9"
+requires-python = ">=3.12"
 readme = "README.md"
 authors = [
   { name="Wes Higbee", email="wes.mcclure@gmail.com" },
