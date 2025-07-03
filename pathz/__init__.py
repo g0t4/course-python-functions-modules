@@ -1,17 +1,17 @@
 import os
 
-def new_func_factory(func):
+def expand_tilde_first_and_then(path_func):
 
-    def new_func(first_component, *parts):
-        expanded_arg = os.path.expanduser(first_component)
-        return func(expanded_arg, *parts)
+    def wrapped_path_func(first_component, *parts):
+        expanded_component = os.path.expanduser(first_component)
+        return path_func(expanded_component, *parts)
 
-    return new_func
+    return wrapped_path_func
 
 
-join = new_func_factory(os.path.join)
-abspath = new_func_factory(os.path.abspath)
-exists = new_func_factory(os.path.exists)
+join = expand_tilde_first_and_then(os.path.join)
+abspath = expand_tilde_first_and_then(os.path.abspath)
+exists = expand_tilde_first_and_then(os.path.exists)
 
 #
 # def join(first_component, *parts):
