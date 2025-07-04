@@ -17,19 +17,20 @@ def expand_tilde2(path_func):
 
 
 
-counter = 0
 
 def countit(fn):
 
+    counter = 0
 
     def wrapper(*args, **kwargs):
-        global counter
+        nonlocal counter
         counter = counter + 1
         # log
         result = fn(*args, **kwargs)
         # log after
         print(f"count: {counter} {fn.__name__}")
-        result
+        # break return here to see prints in the failed test case output:
+        return result
 
     return wrapper
 
@@ -38,7 +39,7 @@ def countit(fn):
 
 
 @expand_tilde2
-# @countit
+@countit
 def exists(path):
     """Test whether a path exists.  Returns False for broken symbolic links"""
     try:
