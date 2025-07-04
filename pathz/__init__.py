@@ -3,12 +3,23 @@ import os
 def expand_tilde_first_and_then(path_func):
 
     def wrapped_path_func(first_component, *parts):
-        expanded_component = os.path.expanduser(first_component)
-        return path_func(expanded_component, *parts)
+        return path_func(os.path.expanduser(first_component), *parts)
 
     return wrapped_path_func
 
-@expand_tilde_first_and_then
+
+
+def expand_tilde2(path_func):
+
+    return lambda first_component, *parts: \
+        path_func(os.path.expanduser(first_component), *parts)
+
+
+
+
+
+
+@expand_tilde2
 def exists(path):
     """Test whether a path exists.  Returns False for broken symbolic links"""
     try:
