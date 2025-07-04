@@ -7,12 +7,17 @@ def expand_tilde_first_and_then(path_func):
 
     return wrapped_path_func
 
-
 def expand_tilde2(path_func):
 
     return lambda first_component, *parts: \
         path_func(os.path.expanduser(first_component), *parts)
 
+def countit(fn):
+
+    def wrapper(*args, **kwargs):
+        return fn(*args, **kwargs)
+
+    return wrapper
 
 @expand_tilde2
 # @expand_tilde_first_and_then
@@ -24,8 +29,8 @@ def exists(path):
         return False
     return True
 
-join = expand_tilde_first_and_then(os.path.join)
-abspath = expand_tilde_first_and_then(os.path.abspath)
+join = expand_tilde_first_and_then((os.path.join))
+abspath = expand_tilde_first_and_then((os.path.abspath))
 # exists = expand_tilde_first_and_then(os.path.exists)
 
 #
