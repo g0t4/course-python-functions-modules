@@ -20,7 +20,6 @@ def countit(fn):
     return wrapper
 
 @expand_tilde2
-# @expand_tilde_first_and_then
 def exists(path):
     """Test whether a path exists.  Returns False for broken symbolic links"""
     try:
